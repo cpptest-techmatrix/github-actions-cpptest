@@ -22,7 +22,7 @@ jobs:
     - name: Generate BDF
       run: |
         cd FlowAnalysis
-        cpptestttace make all
+        cpptesttrace make all
 
     - name: Generate Local Settings
       run: |
