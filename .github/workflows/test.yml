@@ -13,14 +13,12 @@ jobs:
     runs-on: self-hosted-mh
 
     steps:
-    - name: PATH Settings
-      run: echo "C:\Program Files\Parasoft\C++test\10.5" >> $GITHUB_PATH
-    
     - name: Checkout code
       uses: actions/checkout@v2
     
     - name: Generate BDF
       run: |
+        echo "C:\Program Files\Parasoft\C++test\10.5" >> $GITHUB_PATH
         cd FlowAnalysis
         cpptesttrace make all
 
@@ -35,6 +33,7 @@ jobs:
       # Use the 'run-cpptest-action' GitHub Action.
       uses: parasoft/run-cpptest-action@1.0.1
       with:
+        installDir: 'C:\Program Files\Parasoft\C++test\10.5'
         compilerConfig: 'gcc_7-64'
         testConfig: 'builtin://MISRA C 2012'
         reportFormat: xml,html,custom
