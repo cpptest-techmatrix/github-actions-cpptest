@@ -11,8 +11,6 @@ jobs:
   test-cpptest:
     name: Analyze project with C/C++test
     runs-on: self-hosted-mh
-    env:
-      CPPTEST_DIR: 'C:\Program Files\Parasoft\C++test\10.5'
 
     steps:
     - name: Checkout code
@@ -21,10 +19,8 @@ jobs:
     - name: Generate BDF
       env:
         CPPTEST_SCAN_PROJECT_NAME: FlowAnalysis
-      run: |
-        pwd
-        cd FlowAnalysis
-        & $CPPTEST_DIR\cpptesttrace make all
+      run: & "C:\Program Files\Parasoft\C++test\10.5\cpptesttrace.exe" make all
+      working-directory: ./FlowAnalysis
 
     - name: Generate Local Settings
       run: |
@@ -32,8 +28,7 @@ jobs:
         echo report.custom.extension=sarif >> ls.properties
         echo report.custom.xsl.file=${PARASOFT_SARIF_PRO_XSL} >> ls.properties
         echo report.location_details=true >> ls.properties
-        pwd
-        ls
+      working-directory: $GITHUB_WORKSPACE
     
 #    - name: Run C++test
 #      # Use the 'run-cpptest-action' GitHub Action.
