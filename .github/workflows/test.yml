@@ -11,16 +11,19 @@ jobs:
   test-cpptest:
     name: Analyze project with C/C++test
     runs-on: self-hosted-mh
+    env:
+      CPPTEST_DIR: 'C:\Program Files\Parasoft\C++test\10.5'
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
     
     - name: Generate BDF
+      env:
+        CPPTEST_SCAN_PROJECT_NAME: FlowAnalysis
       run: |
-        echo "C:\Program Files\Parasoft\C++test\10.5" >> $GITHUB_PATH
         cd FlowAnalysis
-        cpptesttrace make all
+        $CPPTEST_DIR\cpptesttrace make all
 
     - name: Generate Local Settings
       run: |
@@ -33,7 +36,7 @@ jobs:
       # Use the 'run-cpptest-action' GitHub Action.
       uses: parasoft/run-cpptest-action@1.0.1
       with:
-        installDir: 'C:\Program Files\Parasoft\C++test\10.5'
+        installDir: $CPPTEST_DIR
         compilerConfig: 'gcc_7-64'
         testConfig: 'builtin://MISRA C 2012'
         reportFormat: xml,html,custom
