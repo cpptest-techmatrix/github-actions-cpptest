@@ -25,10 +25,10 @@ jobs:
 
     - name: Generate Local Settings
       run: |
-        echo report.format=custom > ./ls.properties
-        echo report.custom.extension=sarif >> ./ls.properties
-        echo report.custom.xsl.file=${PARASOFT_SARIF_PRO_XSL} >> ./ls.properties
-        echo report.location_details=true >> ./ls.properties
+        echo report.format=custom > .\ls.properties
+        echo report.custom.extension=sarif >> .\ls.properties
+        echo report.custom.xsl.file=${PARASOFT_SARIF_PRO_XSL} >> .\ls.properties
+        echo report.location_details=true >> .\ls.properties
       working-directory: $GITHUB_WORKSPACE
     
 #    - name: Run C++test
