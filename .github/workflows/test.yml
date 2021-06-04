@@ -14,7 +14,7 @@ jobs:
 
     steps:
     - name: PATH Settings
-      run: set PATH="C:\Program Files\Parasoft\C++test\10.5";%PATH%
+      run: echo "C:\Program Files\Parasoft\C++test\10.5" >> $GITHUB_PATH
     
     - name: Checkout code
       uses: actions/checkout@v2
