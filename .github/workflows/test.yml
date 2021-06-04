@@ -30,21 +30,21 @@ jobs:
         echo report.custom.xsl.file=${PARASOFT_SARIF_PRO_XSL} >> .\ls.properties
         echo report.location_details=true >> .\ls.properties
     
-#    - name: Run C++test
-#      # Use the 'run-cpptest-action' GitHub Action.
-#      uses: parasoft/run-cpptest-action@1.0.1
-#      with:
-#        installDir: $CPPTEST_DIR
-#        compilerConfig: 'gcc_7-64'
-#        testConfig: 'builtin://MISRA C 2012'
-#        reportFormat: xml,html,custom
-#        input: 'cpptestscan.bdf'
-#        # For Standard
-#         # additionalParams: '-property report.custom.extension=sarif -property report.custom.xsl.file=${PARASOFT_SARIF_XSL}'
-#         # commandLinePattern : ' ${cpptestcli} -data ../workspace -config "${testConfig}" -report "${reportDir}" -bdf "${input}" ${additionalParams} '
-#        additionalParams: '-localsettings ls.properties'
-#        commandLinePattern: '${cpptestcli} -data ../workspace -config "${testConfig}" -report "${reportDir}" -bdf "${input}" ${additionalParams}'
-#    
+    - name: Run C++test
+      # Use the 'run-cpptest-action' GitHub Action.
+      uses: parasoft/run-cpptest-action@1.0.1
+      with:
+        installDir: $CPPTEST_DIR
+        compilerConfig: 'gcc_7-64'
+        testConfig: 'builtin://MISRA C 2012'
+        reportFormat: xml,html,custom
+        input: 'cpptestscan.bdf'
+        # For Standard
+         # additionalParams: '-property report.custom.extension=sarif -property report.custom.xsl.file=${PARASOFT_SARIF_XSL}'
+         # commandLinePattern : ' ${cpptestcli} -data ../workspace -config "${testConfig}" -report "${reportDir}" -bdf "${input}" ${additionalParams} '
+        additionalParams: '-localsettings ls.properties'
+        commandLinePattern: '${cpptestcli} -data ../workspace -config "${testConfig}" -report "${reportDir}" -bdf "${input}" ${additionalParams}'
+    
 #    # Uploads analysis results in the SARIF format, so that they are displayed as GitHub code scanning alerts.
 #    - name: Upload results (SARIF)
 #      if: always()
