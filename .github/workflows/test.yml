@@ -23,13 +23,6 @@ jobs:
         & "C:\Program Files\Parasoft\C++test\10.5\cpptesttrace.exe" make all
       working-directory: ./FlowAnalysis
 
-    - name: Generate Local Settings
-      run: |
-        echo report.format=custom > .\ls.properties
-        echo report.custom.extension=sarif >> .\ls.properties
-        echo report.custom.xsl.file=${PARASOFT_SARIF_PRO_XSL} >> .\ls.properties
-        echo report.location_details=true >> .\ls.properties
-
     - name: Run C++test
       # Use the 'run-cpptest-action' GitHub Action.
       uses: parasoft/run-cpptest-action@1.0.1
