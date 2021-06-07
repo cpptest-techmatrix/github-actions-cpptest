@@ -29,21 +29,25 @@ jobs:
         echo report.custom.extension=sarif >> .\ls.properties
         echo report.custom.xsl.file=${PARASOFT_SARIF_PRO_XSL} >> .\ls.properties
         echo report.location_details=true >> .\ls.properties
-    
-    - name: Run C++test
-      # Use the 'run-cpptest-action' GitHub Action.
-      uses: parasoft/run-cpptest-action@1.0.1
-      with:
-        installDir: 'C:\Program Files\Parasoft\C++test\10.5'
-        compilerConfig: 'gcc_7-64'
-        testConfig: 'builtin://MISRA C 2012'
-        reportFormat: xml,html,custom
-        input: './FlowAnalysis/cpptestscan.bdf'
-        # For Standard
-         # additionalParams: '-property report.custom.extension=sarif -property report.custom.xsl.file=${PARASOFT_SARIF_XSL}'
-         # commandLinePattern : ' ${cpptestcli} -data ../workspace -config "${testConfig}" -report "${reportDir}" -bdf "${input}" ${additionalParams} '
-        additionalParams: '-localsettings ./ls.properties'
-        commandLinePattern: '${cpptestcli} -J-DCPPTEST_ENGINE_EXTRA_ARGS="-J-Dfile.encoding=UTF-8 -J-Duser.language=en -J-Duser.country=US" -data ../workspace -config "${testConfig}" -report "${reportDir}" -bdf "${input}" ${additionalParams}'
+
+    - name: User Check
+      run: |
+        whoami
+
+ #   - name: Run C++test
+ #     # Use the 'run-cpptest-action' GitHub Action.
+ #     uses: parasoft/run-cpptest-action@1.0.1
+ #     with:
+ #       installDir: 'C:\Program Files\Parasoft\C++test\10.5'
+ #       compilerConfig: 'gcc_7-64'
+ #       testConfig: 'builtin://MISRA C 2012'
+ #       reportFormat: xml,html,custom
+ #       input: './FlowAnalysis/cpptestscan.bdf'
+ #       # For Standard
+ #        # additionalParams: '-property report.custom.extension=sarif -property report.custom.xsl.file=${PARASOFT_SARIF_XSL}'
+ #        # commandLinePattern : ' ${cpptestcli} -data ../workspace -config "${testConfig}" -report "${reportDir}" -bdf "${input}" ${additionalParams} '
+ #       additionalParams: '-localsettings ./ls.properties'
+ #       commandLinePattern: '${cpptestcli} -J-DCPPTEST_ENGINE_EXTRA_ARGS="-J-Dfile.encoding=UTF-8 -J-Duser.language=en -J-Duser.country=US" -data ../workspace -config "${testConfig}" -report "${reportDir}" -bdf "${input}" ${additionalParams}'
     
 #    # Uploads analysis results in the SARIF format, so that they are displayed as GitHub code scanning alerts.
 #    - name: Upload results (SARIF)
