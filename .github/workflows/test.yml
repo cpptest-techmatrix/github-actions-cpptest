@@ -43,7 +43,7 @@ jobs:
          # additionalParams: '-property report.custom.extension=sarif -property report.custom.xsl.file=${PARASOFT_SARIF_XSL}'
          # commandLinePattern : ' ${cpptestcli} -data ../workspace -config "${testConfig}" -report "${reportDir}" -bdf "${input}" ${additionalParams} '
         additionalParams: '-localsettings ./ls.properties'
-        commandLinePattern: '${cpptestcli} -J-DCPPTEST_ENGINE_EXTRA_ARGS="-J-Duser.language=en -J-Duser.country=US" -data ../workspace -config "${testConfig}" -report "${reportDir}" -bdf "${input}" ${additionalParams}'
+        commandLinePattern: '${cpptestcli} -J-DCPPTEST_ENGINE_EXTRA_ARGS="-J-Dfile.encoding=UTF-8 -J-Duser.language=en -J-Duser.country=US" -data ../workspace -config "${testConfig}" -report "${reportDir}" -bdf "${input}" ${additionalParams}'
     
 #    # Uploads analysis results in the SARIF format, so that they are displayed as GitHub code scanning alerts.
 #    - name: Upload results (SARIF)
