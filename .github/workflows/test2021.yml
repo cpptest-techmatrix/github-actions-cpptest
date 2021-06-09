@@ -24,9 +24,9 @@ jobs:
         & "C:\cpptest\2021.1\cpptest\bin\cpptesttrace.exe" make all
       working-directory: ./FlowAnalysis
       
-    - name: Generate Local Settings
-      run: |
-        echo report.format=sarif > ls_2021.properties
+    #- name: Generate Local Settings
+      #run: |
+        #echo report.format=sarif > ls_2021.properties
         #echo scontrol.git.exec=git.exe >> ls_2021.properties
         #echo scontrol.rep.git.branch=main >> ls_2021.properties
         #echo scontrol.rep.git.url=https\://github.com/cpptest-techmatrix/github-actions-cpptest >> ls_2021.properties
@@ -44,7 +44,7 @@ jobs:
         # For Standard
          # additionalParams: '-property report.custom.extension=sarif -property report.custom.xsl.file=${PARASOFT_SARIF_XSL}'
          # commandLinePattern : ' ${cpptestcli} -data ../workspace -config "${testConfig}" -report "${reportDir}" -bdf "${input}" ${additionalParams} '
-        additionalParams: '-localsettings ./ls_2021.properties'
+        additionalParams: '-localsettings ./settings/ls_2021.properties'
         commandLinePattern: '${cpptestcli} -data ../workspace -config "${testConfig}" -report "${reportDir}" -bdf "${input}" ${additionalParams}'
 
     # Uploads analysis results in the SARIF format, so that they are displayed as GitHub code scanning alerts.
