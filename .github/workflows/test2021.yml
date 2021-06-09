@@ -27,6 +27,10 @@ jobs:
     - name: Generate Local Settings
       run: |
         echo report.format=sarif > ls_2021.properties
+        echo scontrol.git.exec=git.exe >> ls_2021.properties
+        echo scontrol.rep1.git.branch=main >> ls_2021.properties
+        echo scontrol.rep1.git.url=https\://github.com/cpptest-techmatrix/github-actions-cpptest >> ls_2021.properties
+        echo scontrol.rep1.git.workspace=C\:\\actions-runner\\_work\\github-actions-cpptest\\github-actions-cpptest >> ls_2021.properties
 
     - name: Run C++test
       # Use the 'run-cpptest-action' GitHub Action.
