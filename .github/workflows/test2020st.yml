@@ -39,7 +39,7 @@ jobs:
         installDir: 'C:\cpptest\2020.2_standard\cpptest'
         compilerConfig: 'gcc_7-64'
         testConfig: 'builtin://MISRA C 2012'
-        reportFormat: xml,html,sarif
+        reportFormat: xml,html,custom
         input: './FlowAnalysis/cpptestscan.bdf'
         additionalParams: '-property report.custom.extension=sarif -property report.custom.xsl.file=${PARASOFT_SARIF_XSL}'
 #        commandLinePattern : ' ${cpptestcli} -data ../workspace -config "${testConfig}" -report "${reportDir}" -bdf "${input}" ${additionalParams} '
