@@ -41,7 +41,7 @@ jobs:
         testConfig: 'builtin://MISRA C 2012'
         input: './FlowAnalysis/cpptestscan.bdf'
         reportFormat: xml,html,custom
-        additionalParams: '-property report.custom.extension=sarif -property report.custom.xsl.file=${PARASOFT_SARIF_XSL}'
+        additionalParams: '-property report.custom.extension=sarif -property report.custom.xsl.file=${PARASOFT_SARIF_PRO_XSL}'
 #        commandLinePattern : ' ${cpptestcli} -data ../workspace -config "${testConfig}" -report "${reportDir}" -bdf "${input}" ${additionalParams} '
 
     # Uploads analysis results in the SARIF format, so that they are displayed as GitHub code scanning alerts.
